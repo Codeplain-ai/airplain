@@ -1,6 +1,6 @@
 # Airplain
 
-***plain specs for a RESTful API for messaging between user accounts.
+Airplain is a messaging service built with ***plain that uses air to deliver messages between users.
 
 ## Overview
 
@@ -15,9 +15,9 @@ Airplain is a backend service that provides:
 
 | Feature | Description |
 |---------|-------------|
-| Registration | Create a new account via `POST /register` |
-| Login | Authenticate and receive a JWT access token via `POST /login` |
-| Logout | Invalidate session via `POST /logout` |
+| Registration | Create a new account  |
+| Login | Authenticate and receive a JWT access token  |
+| Logout | Invalidate session  |
 | Account CRUD | View, edit, and delete your account |
 
 All account endpoints (except registration and login) require authentication via JWT tokens.
@@ -34,11 +34,6 @@ All account endpoints (except registration and login) require authentication via
 - Only conversation participants can access their messages
 - Full CRUD operations available for messages and conversations
 
-### Health Check
-
-| Endpoint | Description |
-|----------|-------------|
-| `GET /healthcheck` | Returns `200 OK` if the service is running |
 
 ## Tech Stack
 
@@ -51,44 +46,13 @@ All account endpoints (except registration and login) require authentication via
 
 ## API Endpoints
 
-### Authentication
-```
-POST /register    – Register a new account
-POST /login       – Login and receive access token
-POST /logout      – Logout from account
-```
-
-### Accounts (Authenticated)
-```
-GET    /accounts/{id}    – View account details
-PUT    /accounts/{id}    – Update account
-DELETE /accounts/{id}    – Delete account
-```
-
-### Messages (Authenticated)
-```
-GET    /messages         – List messages
-POST   /messages         – Send a message
-GET    /messages/{id}    – Get message details
-PUT    /messages/{id}    – Update message
-DELETE /messages/{id}    – Delete message
-```
-
-### Conversations (Authenticated)
-```
-GET    /conversations         – List conversations
-POST   /conversations         – Create conversation
-GET    /conversations/{id}    – Get conversation details
-PUT    /conversations/{id}    – Update conversation
-DELETE /conversations/{id}    – Delete conversation
-```
-
 ## Getting Started
 
 ### Prerequisites
 
 - Java 21
 - Maven 3.x
+- codeplain 0.2.6
 
 ### Project Structure
 
@@ -99,36 +63,11 @@ airplain/
 └── test_scripts/              # Build and test automation
 ```
 
-### Configuration
+### Running *codeplain rendering
 
-Key configuration options (in `application.yml`):
-
-| Setting | Value |
-|---------|-------|
-| Logging Level (root) | `DEBUG` |
-| Logging Level (Spring/Apache) | `WARN` |
-| Unknown fields | Ignored in data models |
-| Null fields | Skipped in JSON serialization |
-| Unknown endpoints | Return `404` with empty body |
-
-### Setup
-
-1. Set Java 21 as your runtime:
-   ```bash
-   export JAVA_HOME=$(/usr/libexec/java_home -v 21)
-   ```
-
-2. Build the project:
-   ```bash
-   mvn clean install -DskipTests
-   ```
-
-3. Run the application:
-   ```bash
-   mvn spring-boot:run
-   ```
-
-The API will be available at `http://127.0.0.1:5000` by default.
+```bash
+$ codeplain messages.plain
+```
 
 ## License
 
