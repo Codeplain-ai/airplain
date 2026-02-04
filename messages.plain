@@ -8,6 +8,7 @@ requires:
 ***definitions***
 - :Message: is a message sent between two :Account: objects..
 - :Conversation: is a collection of :Message: objects between two :Account: objects.
+- :DTO: is a data transfer object and is intended to be used for data transfer between the :App: and the client.
 
 ***implementation reqs***
 - A :Conversation: is created when two :Account: objects send a message to each other.
@@ -18,6 +19,6 @@ requires:
 - :Authentication: should be applied to all dealing with :Message: and :Conversation: objects.
 
 ***functional specs***
-- Implement the DTOs for :Message: and :Conversation: objects.
+- Implement the :DTO: objects for :Message: and :Conversation:.
 - Implement CRUD endpoints for :Message: objects.
 - Implement CRUD endpoints for :Conversation: objects.
