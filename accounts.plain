@@ -1,0 +1,28 @@
+---
+import:
+    - base
+requires:
+    - healthcheck
+exported_concepts:
+    - :Account:
+---
+
+***definitions***
+- :Account: is a record of a user's account.
+
+***implementation reqs***
+- A user can register an :Account:.
+- A user can login to an :Account:.
+- A user can logout from an :Account:.
+- A user can view their :Account:.
+- A user can edit their :Account:.
+- A user can delete their :Account:.
+- When a user logs or registers, the :App: should generate a :AccessToken: for the user.
+- :Authentication: should be applied to all CRUD endpoints for :Account: objects.
+
+***functional specs***
+- Implement a POST /register endpoint that allows a user to register an :Account:.
+- Implement a POST /login endpoint that allows a user to login to an :Account:.
+- Implement a POST /logout endpoint that allows a user to logout from an :Account:.
+
+- Implement CRUD endpoints for :Account: objects.

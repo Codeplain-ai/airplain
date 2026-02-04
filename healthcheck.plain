@@ -1,0 +1,7 @@
+---
+import:
+    - base
+---
+
+***functional specs***
+- Implement a /healthcheck endpoint that returns a 200 status code if the :App: is running.

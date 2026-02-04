@@ -1,0 +1,23 @@
+---
+import:
+    - base
+requires:
+    - accounts
+---
+
+***definitions***
+- :Message: is a message sent between two :Account: objects..
+- :Conversation: is a collection of :Message: objects between two :Account: objects.
+
+***implementation reqs***
+- A :Conversation: is created when two :Account: objects send a message to each other.
+- A :Message: is stored in a :Conversation: by a :Account:.
+- A :Conversation: can have several :Message: objects. 
+- A :Conversation: should be associated only with two :Account: objects.
+- An :Account: should be able to fetch all messages in a :Conversation: they are a participant of.
+- :Authentication: should be applied to all dealing with :Message: and :Conversation: objects.
+
+***functional specs***
+- Implement the DTOs for :Message: and :Conversation: objects.
+- Implement CRUD endpoints for :Message: objects.
+- Implement CRUD endpoints for :Conversation: objects.
