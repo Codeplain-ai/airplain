@@ -18,11 +18,14 @@ exported_concepts:
 - A user can edit their :Account:.
 - A user can delete their :Account:.
 - When a user logs or registers, the :App: should generate a :AccessToken: for the user.
-- :Authentication: should be applied to all CRUD endpoints for :Account: objects.
+- :Authentication: should be applied to all /me endpoints for :Account:.
+- An :Account: should have an username and a password
 
 ***functional specs***
 - Implement a POST /register endpoint that allows a user to register an :Account:.
 - Implement a POST /login endpoint that allows a user to login to an :Account:.
 - Implement a POST /logout endpoint that allows a user to logout from an :Account:.
 
-- Implement CRUD endpoints for :Account: objects.
+- Implement PUT /me endpoint that allows a user to update their :Account:.
+- Implement GET /me endpoint that allows a user to view their :Account:.
+- Implement DELETE /me endpoint that allows a user to delete their :Account:.

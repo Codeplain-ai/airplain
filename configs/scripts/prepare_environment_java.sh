@@ -11,7 +11,7 @@ if [ -z "$1" ]; then
   exit 1
 fi
 
-JAVA_BUILD_SUBFOLDER=java_$1
+JAVA_BUILD_SUBFOLDER=.tmp/java_$1
 
 if [ "${VERBOSE:-}" -eq 1 ] 2>/dev/null; then
   printf "Copying generated code to main project folder: $JAVA_BUILD_SUBFOLDER\n"

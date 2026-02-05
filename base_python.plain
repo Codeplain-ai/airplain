@@ -1,0 +1,29 @@
+---
+import:
+    - app
+---
+
+***implementation reqs***
+- :Implementation: must be in Python 3.9 or higher.
+- The project must include a "requirements.txt" file listing all dependencies.
+- Use the standard "unittest" framework for unit testing.
+- The :App: should be implemented in the Flask framework.
+- Data model validators should be reused.
+- For generating getters, setters, constructors and other boilerplate code use PyDantic library.
+- The :App: should include unit tests using Python's built-in testing package and should be put in `tests` folder.
+- The data models should ignore unknown fields. 
+- When serializing data models into JSON, null fields should be skipped unless specifically set.
+- Logging level should be set to DEBUG mode for logging.level.root. All other logging levels should be set to WARN.
+- :App: should return 404 status code for unknown endpoints. The response body should be empty.
+- :App: should use a in-memory database. Flask-SQLAlchemy should be used for database operations with an in memory SQLite database.
+- :AccessToken: should be JWT tokens and the :App: should be able to validate them and identify the user associated with the token.
+- The :App: should be default listen to port 6000.
+
+***test reqs***
+- The venv can be flexible about the versions of dependencies used. This should be reflected in the requirements.txt file.
+- :ConformanceTests: of the :App: should be implemented in Python and will be built and tested with unittest.
+- :ConformanceTests: will be run using these scripts:     
+    - [configs/scripts/run_conformance_tests_python.sh](configs/scripts/run_conformance_tests_python.sh)
+- :ConformanceTests: should contain a lot of logging statements to make debugging easier.
+- :ConformanceTests: should use minimal sleep and iteration times to speed up the tests.
+- :ConformanceTests: that invoke the :App: APIs should first start the server and then execute the tests.

@@ -1,5 +1,5 @@
 verbose: false
-api: http://127.0.0.1:5000
-conformance-tests-script: test_scripts/run_conformance_tests.sh
-prepare-environment-script: test_scripts/prepare_environment_java.sh
-unittests-script: test_scripts/run_unittests.sh
+api: https://api.codeplain.ai
+conformance-tests-script: configs/scripts/run_conformance_tests_java.sh
+prepare-environment-script: configs/scripts/prepare_environment_java.sh
+unittests-script: configs/scripts/run_unittests_java.sh

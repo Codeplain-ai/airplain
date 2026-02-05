@@ -1,5 +1,6 @@
 plain_modules
 conformance_tests
-java_conformance
-java_plain_modules
 codeplain.log
+.tmp
+.DS_Store
+__MACOSX

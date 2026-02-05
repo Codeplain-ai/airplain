@@ -59,8 +59,7 @@ All account endpoints (except registration and login) require authentication via
 ```
 airplain/
 ├── *.plain                    # Specification files
-├── config.yaml                # Configuration
-└── test_scripts/              # Build and test automation
+└── configs/              # Configuration and testing scripts
 ```
 
 ### Running *codeplain rendering

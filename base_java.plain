@@ -1,0 +1,32 @@
+---
+import:
+    - app
+---
+
+***implementation reqs***
+- The :Implementation: should be in Java 21.
+- The :App: should be implemented in the Springboot framework.
+- The Spring Boot Maven Plugin should be configured with a classifier (e.g., 'exec') to distinguish the executable JAR from the standard JAR artifact.
+- The build configuration should support proper dependency management and executable packaging for deployment.
+- Data model validators should be reused.
+- For generating getters, setters, constructors and other boilerplate code use lombook library. For validation use jakarta.validation library.
+- The :App: should include unit tests using Java's built-in testing package and should be put in `src/test/java` folder.
+- The data models should ignore unknown fields. 
+- The validators should be reused wherever possible.
+- When serializing data models into JSON, null fields should be skipped unless specifically set.
+- Logging level should be set to DEBUG mode for logging.level.root. All other logging levels should be set to WARN (from springframework and apache).
+- :App: should return 404 status code for unknown endpoints. The response body should be empty.
+- :App: should use a in-memory database. Spring Data repositories should be used for database operations (H2 Database).
+- :AccessToken: should be JWT tokens and the :App: should be able to validate them and identify the user associated with the token.
+
+***test reqs***
+- :ConformanceTests: of the :App: should be implemented in Java and will be built and tested with Maven.
+- :ConformanceTests: should contain their own pom.xml at the root of the :ConformanceTests: folder (<CONFORMANCE_TESTS_FOLDER>).
+- :ConformanceTests: will be executed using the "mvn test" command and therefore pom.xml has to include all test files available in the project.
+- :ConformanceTests: will be run using these scripts: 
+    - [configs/scripts/prepare_environment_java.sh](configs/scripts/prepare_environment_java.sh)
+    - [configs/scripts/run_conformance_tests_java.sh](configs/scripts/run_conformance_tests_java.sh)
+- :ConformanceTests: should contain a lot of logging statements to make debugging easier.
+- :ConformanceTests: should use minimal sleep and iteration times to speed up the tests.
+- :ConformanceTests: that invoke the :App: APIs should first start the server and then execute the tests.
+- :ConformanceTests: that test the :App: Spring Boot Controller should use the @SpringBootTest annotation.

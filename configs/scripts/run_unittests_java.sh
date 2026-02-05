@@ -10,7 +10,7 @@ if [ -z "$1" ]; then
 fi
 
 # Define the path to the java build subfolder
-JAVA_SUBFOLDER=java_$1
+JAVA_SUBFOLDER=.tmp/java_$1
 
 # Check if the java subfolder exists
 if [ -d "$JAVA_SUBFOLDER" ]; then

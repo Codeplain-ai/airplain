@@ -21,7 +21,7 @@ printf "Current directory: $current_dir\n"
 
 tree $2
 
-JAVA_BUILD_SUBFOLDER=java_$1
+JAVA_BUILD_SUBFOLDER=.tmp/java_$1
 
 # if [ "${VERBOSE:-}" -eq 1 ] 2>/dev/null; then
 #   printf "Preparing Java build subfolder: $JAVA_BUILD_SUBFOLDER\n"
@@ -67,7 +67,7 @@ JAVA_BUILD_SUBFOLDER=java_$1
 #     exit $exit_code
 # fi
 
-CONFORMANCE_TESTS_FOLDER=java_conformance
+CONFORMANCE_TESTS_FOLDER=.tmp/java_conformance
 
 cd "$current_dir" 2>/dev/null
 printf "Moved to $current_dir...\n"
