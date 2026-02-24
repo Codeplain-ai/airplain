@@ -11,13 +11,7 @@ exported_concepts:
 - :Account: is a record of a user's account.
 
 ***implementation reqs***
-- A user can register an :Account:.
-- A user can login to an :Account:.
-- A user can logout from an :Account:.
-- A user can view their :Account:.
-- A user can edit their :Account:.
-- A user can delete their :Account:.
-- When a user logs or registers, the :App: should generate a :AccessToken: for the user.
+- When a user logs in or registers, the :App: should generate a :AccessToken: for the user.
 - :Authentication: should be applied to all /me endpoints for :Account:.
 - An :Account: should have an username and a password
 
