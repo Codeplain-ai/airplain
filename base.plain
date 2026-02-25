@@ -1,8 +1,35 @@
 ---
 import:
-    - base_java
+    - app
 ---
 
 ***definitions***
-- :AccessToken: is a token that allows a user to access the :App:.
-- :Authentication: is the process of verifying the identity of a user.
+- :ApiCredentials: are credentials that are used when connecting with the Dataverse API. They are available in the environment variables - client_id, client_secret, endpoint, tenant_id
+
+***implementation reqs***
+- The :App: should be implemented in the Springboot framework.
+- The Spring Boot Maven Plugin should be configured with a classifier (e.g., 'exec') to distinguish the executable JAR from the standard JAR artifact.
+- The build configuration should support proper dependency management and executable packaging for deployment
+- For generating getters, setters, constructors and other boilerplate code use lombook library. For validation use jakarta.validation library.
+- The :App: should include unit tests using Java's built-in testing package and should be put in `src/test/java` folder.
+- The data models should ignore unknown fields. 
+- When serializing data models into JSON, null fields should be skipped unless specifically set.
+- Logging level should be set to DEBUG mode for logging.level.root. All other logging levels should be set to WARN (from springframework and apache)
+- The :App: should return 404 status code for unknown endpoints. The response body should be empty.
+- :App: should use a in-memory database. Spring Data repositories should be used for database operations (H2 Database). For production, it should be configurable to use a persistent database.
+- The :App: should implement proper error handling and return appropriate HTTP status codes and error messages for different error scenarios (e.g., 400 for bad requests, 401 for unauthorized access, 500 for internal server errors).
+- The :App: should have parent child relationship maintained in the database.
+
+
+***test reqs***
+- :ConformanceTests: of the :App: should be implemented in Java and will be built and tested with Maven.
+- :ConformanceTests: should contain their own pom.xml at the root of the :ConformanceTests: folder (<CONFORMANCE_TESTS_FOLDER>).
+- :ConformanceTests: will be executed using the "mvn test" command and therefore pom.xml has to include all test files available in the project.
+- :ConformanceTests: will be run using these scripts: 
+    - [configs/scripts/prepare_environment_java.sh](configs/scripts/prepare_environment_java.sh)
+    - [configs/scripts/run_conformance_tests_java.sh](configs/scripts/run_conformance_tests_java.sh)
+- :ConformanceTests: should contain a lot of logging statements to make debugging easier.
+- :ConformanceTests: should use minimal sleep and iteration times to speed up the tests.
+- :ConformanceTests: that invoke the :App: APIs should first start the server and then execute the tests.
+- :ConformanceTests: that test the :App: Spring Boot Controller should use the @SpringBootTest annotation.
+- :ConformanceTests: should use :ApiCredentials: when connecting with the Dataverse API.

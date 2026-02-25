@@ -1,0 +1,19 @@
+---
+import:
+    - base
+---
+
+***definitions***
+- :Conversation: is a collection of Emails
+- :Post: is an Email in a :Conversation:. It is the child of the :Conversation:.
+- :User: is an individual present in the :Group: and can send :Post: in a :Conversation:.
+- :Group: is a microsoft 365 group.
+
+***functional specs***
+- Implement a function to fetch an access token from the Dataverse API. OpenApi spec for the authentication API is available in [resources/auth_spec.yaml](resources/auth_spec.yaml).
+
+
+
+> - Implement an endpoint GET /groups that will fetch all :Group: objects a user is a member of.
+> - Implement an endpoint GET /groups/{groupId}/conversations that will fetch all :Conversation: present in a :Group:.
+> - Implement an endpoint GET /conversations/{conversationId}/posts that will fetch all :Post: present in a :Conversation:.
