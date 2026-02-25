@@ -6,13 +6,20 @@ import:
 ***definitions***
 - :Conversation: is a collection of Emails
 - :Post: is an Email in a :Conversation:. It is the child of the :Conversation:.
-- :User: is an individual present in the :Group: and can send :Post: in a :Conversation:.
+- :User: is an account from Dynamics 365 present in the :Group: and can send :Post: in a :Conversation:.
 - :Group: is a microsoft 365 group.
 
 ***functional specs***
 - Implement a function to fetch an access token from the Dataverse API. OpenApi spec for the authentication API is available in [resources/auth_spec.yaml](resources/auth_spec.yaml).
 
+- Implement a function to fetch the users from the Dataverse API and persist them in the database of the :App:. OpenApi spec for fetching the users is available in [resources/users_spec.yaml](resources/users_spec.yaml).
+    - The following fields from Dataverse API should be persisted in the database:
+        - fullname
+        - windowsliveid - should be stored as email
 
+- Implement an endpoint POST /sync that will run the function to fetch the users from the Dataverse API and persist them in the database.
+
+- Implement an endpoint GET /users that will fetch all :User: objects from the database.
 
 > - Implement an endpoint GET /groups that will fetch all :Group: objects a user is a member of.
 > - Implement an endpoint GET /groups/{groupId}/conversations that will fetch all :Conversation: present in a :Group:.

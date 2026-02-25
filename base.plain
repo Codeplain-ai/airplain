@@ -33,3 +33,4 @@ import:
 - :ConformanceTests: that invoke the :App: APIs should first start the server and then execute the tests.
 - :ConformanceTests: that test the :App: Spring Boot Controller should use the @SpringBootTest annotation.
 - :ConformanceTests: should use :ApiCredentials: when connecting with the Dataverse API.
+- :ConformanceTests: should not mock any connection with the Dataverse API. The sandbox environment should be used to test the :App:.

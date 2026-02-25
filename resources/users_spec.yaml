@@ -1,0 +1,123 @@
+openapi: 3.1.0
+info:
+  title: Dynamics 365 Dataverse SystemUser API
+  version: 1.0.0
+  description: API for querying SystemUser entities in Microsoft Dataverse.
+
+servers:
+  - url: https://{org}.crm.dynamics.com/api/data/v9.2
+    description: Dynamics 365 Dataverse instance
+    variables:
+      org:
+        default: yourorg
+        description: Organization name
+
+paths:
+  /systemusers:
+    get:
+      summary: List system users
+      description: Returns a list of system users. Supports filtering and $count.
+      parameters:
+        - name: $filter
+          in: query
+          description: OData filter expression (e.g., isdisabled eq false and applicationid eq null)
+          required: false
+          schema:
+            type: string
+        - name: $count
+          in: query
+          description: Return the total count of matching users
+          required: false
+          schema:
+            type: boolean
+        - name: $select
+          in: query
+          description: Comma-separated list of properties to return
+          required: false
+          schema:
+            type: string
+        - name: $top
+          in: query
+          description: Maximum number of records to return
+          required: false
+          schema:
+            type: integer
+        - name: $skip
+          in: query
+          description: Number of records to skip
+          required: false
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: List of system users
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  @odata.count:
+                    type: integer
+                    description: Total count of users (if $count=true)
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/SystemUser'
+
+  /systemusers/{systemuserid}:
+    get:
+      summary: Get system user by ID
+      description: Returns a single system user by their ID.
+      parameters:
+        - name: systemuserid
+          in: path
+          required: true
+          description: GUID of the system user
+          schema:
+            type: string
+            format: uuid
+        - name: $select
+          in: query
+          description: Comma-separated list of properties to return
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: System user record
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SystemUser'
+        '404':
+          description: User not found
+
+components:
+  schemas:
+    SystemUser:
+      type: object
+      properties:
+        systemuserid:
+          type: string
+          format: uuid
+          description: Unique identifier for the user
+        firstname:
+          type: string
+        lastname:
+          type: string
+        domainname:
+          type: string
+          description: User login name
+        internalemailaddress:
+          type: string
+        isdisabled:
+          type: boolean
+          description: Whether the user is disabled
+        applicationid:
+          type: string
+          format: uuid
+          nullable: true
+          description: Null for human users, GUID for application users
+        userlicensetype:
+          type: integer
+          description: License type (1=Full, 3=Admin, 4=Application)
